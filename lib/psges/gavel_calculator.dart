@@ -19,6 +19,11 @@ class _GavelCalculatorState extends State<GavelCalculator> {
   // Creating the number of the values
   int num_affidavit = 0;
   int num_motion_on_notice = 0;
+  int num_motion_on_exparte = 0;
+  int num_writ_of_summons = 0;
+  int num_prayers = 0;
+  int num_service = 0;
+  int num_penalty = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +60,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                           setState(() {
                             this.total = 0;
                             this.num_affidavit = 0;
+                            this.num_motion_on_notice = 0;
+                            this.num_motion_on_exparte = 0;
+                            this.num_writ_of_summons = 0;
+                            this.num_prayers = 0;
+                            this.num_service = 0;
+                            this.num_penalty = 0;
                           });
                         },
                       ),
@@ -147,7 +158,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_motion_on_notice}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -160,7 +171,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total + this.motion_on_notice;
+                            if (this.total >= 0 &&
+                                this.num_motion_on_notice >= 0) {
+                              this.total = this.total + this.motion_on_notice;
+                              this.num_motion_on_notice =
+                                  this.num_motion_on_notice + 1;
+                            }
                           });
                         },
                       ),
@@ -174,7 +190,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.motion_on_notice;
+                            if (this.total > 0 &&
+                                this.num_motion_on_notice > 0) {
+                              this.total = this.total - this.motion_on_notice;
+                              this.num_motion_on_notice =
+                                  this.num_motion_on_notice - 1;
+                            }
                           });
                         },
                       ),
@@ -204,7 +225,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_motion_on_exparte}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -217,7 +238,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total + this.motion_exparte;
+                            if (this.total >= 0 &&
+                                this.num_motion_on_exparte >= 0) {
+                              this.total = this.total + this.motion_exparte;
+                              this.num_motion_on_exparte =
+                                  this.num_motion_on_exparte + 1;
+                            }
                           });
                         },
                       ),
@@ -229,7 +255,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                             Icon(Icons.do_not_disturb_on, color: Colors.white),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.motion_exparte;
+                            if (this.total > 0 &&
+                                this.num_motion_on_exparte > 0) {
+                              this.total = this.total - this.motion_exparte;
+                              this.num_motion_on_exparte =
+                                  this.num_motion_on_exparte - 1;
+                            }
                           });
                         },
                       ),
@@ -257,7 +288,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_writ_of_summons}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -270,7 +301,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total + this.writ_of_summons;
+                            if (this.total >= 0 &&
+                                this.num_writ_of_summons >= 0) {
+                              this.total = this.total + this.writ_of_summons;
+                              this.num_writ_of_summons =
+                                  this.num_writ_of_summons + 1;
+                            }
                           });
                         },
                       ),
@@ -282,7 +318,12 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                             Icon(Icons.do_not_disturb_on, color: Colors.white),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.writ_of_summons;
+                            if (this.total > 0 &&
+                                this.num_writ_of_summons > 0) {
+                              this.total = this.total - this.writ_of_summons;
+                              this.num_writ_of_summons =
+                                  this.num_writ_of_summons - 1;
+                            }
                           });
                         },
                       ),
@@ -312,7 +353,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_prayers}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -325,7 +366,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total + this.prayers;
+                            if (this.total >= 0 && this.num_prayers >= 0) {
+                              this.total = this.total + this.prayers;
+                              this.num_prayers = this.num_prayers + 1;
+                            }
                           });
                         },
                       ),
@@ -339,7 +383,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.prayers;
+                            if (this.total > 0 && this.num_prayers > 0) {
+                              this.total = this.total - this.prayers;
+                              this.num_prayers = this.num_prayers - 1;
+                            }
                           });
                         },
                       ),
@@ -369,7 +416,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_service}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -382,7 +429,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.service;
+                            if (this.total >= 0 && this.num_service >= 0) {
+                              this.total = this.total + this.service;
+                              this.num_service = this.num_service + 1;
+                            }
                           });
                         },
                       ),
@@ -396,7 +446,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.service;
+                            if (this.total > 0 && this.num_service > 0) {
+                              this.total = this.total - this.service;
+                              this.num_service = this.num_service - 1;
+                            }
                           });
                         },
                       ),
@@ -426,7 +479,7 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                   Row(
                     children: <Widget>[
                       Text(
-                        "0",
+                        "${num_penalty}",
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
@@ -439,7 +492,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total + this.penalty;
+                            if (this.total >= 0 && this.num_penalty >= 0) {
+                              this.total = this.total + this.penalty;
+                              this.num_penalty = this.num_penalty + 1;
+                            }
                           });
                         },
                       ),
@@ -453,7 +509,10 @@ class _GavelCalculatorState extends State<GavelCalculator> {
                         ),
                         onTap: () {
                           setState(() {
-                            this.total = this.total - this.penalty;
+                            if (this.total > 0 && this.num_penalty > 0) {
+                              this.total = this.total - this.penalty;
+                              this.num_penalty = this.num_penalty - 1;
+                            }
                           });
                         },
                       ),
